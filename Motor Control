@@ -10,7 +10,6 @@ GPIO.setup(servoPin, GPIO.OUT)  # 서보핀 출력으로 설정
 
 servo = GPIO.PWM(servoPin, 50)  # 서보핀을 PWM 모드 50Hz로 사용하기 (50Hz > 20ms)
 servo.start(0)  # 서보 PWM 시작 duty = 0, duty가 0이면 서보는 동작하지 않는다.
-
 '''
 서보 위치 제어 함수
 degree에 각도를 입력하면 duty로 변환후 서보 제어(ChangeDutyCycle)
