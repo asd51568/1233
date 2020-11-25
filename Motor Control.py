@@ -28,7 +28,7 @@ def setServoPos(degree):
   servo.ChangeDutyCycle(duty)
 
   #서보 작동 테스트용 코드
-if __name__ == "__main__":  
+def main()
   # 서보 0도
   setServoPos(0)
   sleep(1) # 1초 대기
@@ -52,6 +52,8 @@ if __name__ == "__main__":
   servo.stop()
   GPIO.cleanup()
   
+if __name__ == "__main__":  
+  main()
   #실제 사용할 예정인 코드
   
 import RPi.GPIO as GPIO 
@@ -76,6 +78,7 @@ def setServoPos(degree):
 
   servo.ChangeDutyCycle(duty)
   
+def main()
   setServoPos(180)  #서보를 작동하여 고리를 걸수있게 위치를 조정
   sleep(물건이 정해진위치에 도달했을때까지)
   
@@ -87,3 +90,6 @@ def setServoPos(degree):
   
   servo.stop()
   GPIO.cleanup()
+  
+if __name__ == "__main__":  
+  main()
