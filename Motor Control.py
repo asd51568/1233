@@ -54,6 +54,7 @@ def main()
   
 if __name__ == "__main__":  
   main()
+  
   #실제 사용할 예정인 코드
   
 import RPi.GPIO as GPIO 
