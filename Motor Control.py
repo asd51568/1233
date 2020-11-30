@@ -94,3 +94,6 @@ def main()
   
 if __name__ == "__main__":  
   main()
+  
+#참고자료1
+import RPi.GPIO as 
