@@ -1,3 +1,4 @@
+#!/usr/bin/env/python3
 # -*- coding: euc-kr -*- 
 
 # DroneKit, pymavlink, 기본 모듈 import
