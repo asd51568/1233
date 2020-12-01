@@ -96,4 +96,16 @@ if __name__ == "__main__":
   main()
   
 #참고자료1
-import RPi.GPIO as 
+#https://www.youtube.com/watch?v=xHDT4CwjUQE
+import RPi.GPIO as GPIO
+import time
+
+
+GPIO.setmode(GPIO.BOARD)
+
+GPIO.setup(11,GPIO.OUT)
+servo1 = GPIO.PWM(11,50)
+
+servo1 start(0)
+print ("waiting for 2 seconds")
+time.sleep(2)
