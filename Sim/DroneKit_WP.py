@@ -1,3 +1,5 @@
+#!/usr/bin/env/python3
+
 # DroneKit, pymavlink, 기본 모듈 import
 from dronekit import connect, Command, LocationGlobal, VehicleMode, LocationGlobalRelative
 from pymavlink import mavutil
