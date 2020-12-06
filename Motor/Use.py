@@ -23,16 +23,11 @@ duty = 2
 #Loop for duty values from 2 to 12 (0 to 180 degrees)
 while duty <= 12:
   servo1.ChangeDutyCycle(duty)
-  time.sleep(1)
+  time.sleep(0.5)
   duty = duty + 1
   
 #Wait a couple of seconds
-time.sleep(2)
-
-#Turn back to 90 degrees
-print ("Turning back to 90 degrees for 2 seconds")
-servo1.ChangeDutyCycle(7)
-time.sleep(2)
+time.sleep(5)
 
 #Turn back to 0 degrees
 print ("Turning back to 0 degrees")
