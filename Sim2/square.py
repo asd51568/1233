@@ -19,13 +19,12 @@ async def run():
     drone = System()
     await drone.connect(system_address="udp://:14540")
 
-    print("-- Arming")
+    print("-- 시동")
     await drone.action.arm()
-
-    print("-- Setting initial setpoint")
+    
     await drone.offboard.set_position_ned(PositionNedYaw(0.0, 0.0, 0.0, 0.0))
 
-    print("-- Starting offboard")
+    print("-- offboard control 시작")
     try:
         await drone.offboard.start()
     except OffboardError as error:
@@ -34,23 +33,35 @@ async def run():
         await drone.action.disarm()
         return
 
-    print("-- Go 0m North, 0m East, -5m Down within local coordinate system")
-    await drone.offboard.set_position_ned(PositionNedYaw(0.0, 0.0, -5.0, 0.0))
+    print("-- 고도 10m 상승")
+    await drone.offboard.set_position_ned(PositionNedYaw(0.0, 0.0, -10.0, 0.0))
     await asyncio.sleep(10)
 
-    print("-- Go 5m North, 0m East, -5m Down within local coordinate system, turn to face East")
-    await drone.offboard.set_position_ned(PositionNedYaw(5.0, 0.0, -5.0, 90.0))
-    await asyncio.sleep(10)
+    print("-- 10m 전진")
+    await drone.offboard.set_position_ned(PositionNedYaw(10.0, 0.0, -10.0, 0.0))
+    await asyncio.sleep(3)
+    
+    print("-- 90도 우측 회전 후 전진")
+    await drone.offboard.set_position_ned(PositionNedYaw(10.0, 0.0, -10.0, 90.0))
+    await asyncio.sleep(1)
+    await drone.offboard.set_position_ned(PositionNedYaw(10.0, 10.0, -10.0, 90.0))
+    await asyncio.sleep(3)
 
-    print("-- Go 5m North, 10m East, -5m Down within local coordinate system")
-    await drone.offboard.set_position_ned(PositionNedYaw(5.0, 10.0, -5.0, 90.0))
+    print("-- 배송지 도착 : 착륙")
+    await drone.offboard.set_position_ned(PositionNedYaw(10.0, 10.0, 0.0, 90.0))
     await asyncio.sleep(15)
-
-    print("-- Go 0m North, 10m East, 0m Down within local coordinate system, turn to face South")
-    await drone.offboard.set_position_ned(PositionNedYaw(0.0, 10.0, 0.0, 180.0))
+    
+    print("-- 배송 완료 : 이륙")
+    await drone.offboard.set_position_ned(PositionNedYaw(10.0, 10.0, -10.0, 90.0))
     await asyncio.sleep(10)
+    
+    print("-- 90도 우측 회전 후 전진")
+    await drone.offboard.set_position_ned(PositionNedYaw(10.0, 10.0, -10.0, 180.0))
+    await asyncio.sleep(1)
+    await drone.offboard.set_position_ned(PositionNedYaw(0.0, 10.0, -10.0, 180.0))
+    await asyncio.sleep(3)
 
-    print("-- Stopping offboard")
+    print("-- offboard 종료 : RTL")
     try:
         await drone.offboard.stop()
     except OffboardError as error:
