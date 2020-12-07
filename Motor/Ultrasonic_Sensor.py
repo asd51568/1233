@@ -36,5 +36,5 @@ try:
         
 except KeyboardInterrupt: # If there is a KeyboardInterrupt (when you press ctrl+c), exit the program
     print("Cleaning up!")
-    gpio.cleanup()
+    GPIO.cleanup()
 
