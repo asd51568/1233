@@ -50,6 +50,7 @@ async def run():
     print("-- 배송지 도착 : 착륙")
     await drone.offboard.set_position_ned(PositionNedYaw(10.0, 10.0, 0.0, 90.0))
     await asyncio.sleep(15)
+    ##--SERVO CODE
     
     print("-- 배송 완료 : 이륙")
     await drone.offboard.set_position_ned(PositionNedYaw(10.0, 10.0, -10.0, 90.0))
