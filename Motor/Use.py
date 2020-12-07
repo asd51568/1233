@@ -21,7 +21,7 @@ servo1 = GPIO.PWM(11,50) #Note 11 is pin, 50 = 50Hz pulse
  
 try:
   #start PWM running, but with value of 0 (pulse off)
-    servo1 start(0)
+    servo1.start(0)
     while True:
         
         GPIO.output(TRIG, False)
