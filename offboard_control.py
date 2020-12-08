@@ -19,7 +19,7 @@ async def run():
     try:
         await drone.offboard.start()
     except OffboardError as error:
-        print(f"Starting offboard mode failed with error code: {error._result.result}")
+        print("Starting offboard mode failed with error code: {error._result.result}")
         print("-- Disarming")
         await drone.action.disarm()
         return
